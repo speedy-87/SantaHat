@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SantaHat</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background-color: #f0f8ff; /* Light snow/icy blue */
+            color: #333;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            color: #228B22; /* Forest green */
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #B22222; /* Firebrick red */
+            color: #fff;
+            padding: 15px 20px;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        /* Navbar for larger screens */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* Hamburger Menu (Hidden by default) */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+        }
+
+        /* Mobile Navbar (Hamburger menu visible) */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                width: 100%;
+                text-align: center;
+                flex-direction: column;
+                margin-top: 20px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            nav.active ul {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+        }
+
+        /* Hero Section */
+        #hero {
+            background: url('path/to/hero-image.jpg') no-repeat center center/cover;
+            color: #fff;
+            padding: 100px 20px;
+            text-align: center;
+            background-color: #A52A2A; /* Brownish red (for a festive touch) */
+        }
+
+        #hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-btn {
+            background-color: #228B22; /* Forest green */
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 5px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            background-color: #006400; /* Dark green for hover */
+        }
+
+        /* Section Styles */
+        section {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        #features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 250px;
+            margin: 20px;
+            border-radius: 8px;
+            background-color: #f5f5f5; /* Light grey for contrast */
+        }
+
+        #contact form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #contact input, #contact textarea {
+            padding: 10px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #contact button {
+            padding: 12px;
+            background-color: #B22222; /* Firebrick red */
+            color: #fff;
+            font-weight: 500;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #contact button:hover {
+            background-color: #8B0000; /* Dark red for hover */
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #B22222; /* Firebrick red */
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">SantaHat</div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="custom.html">Character Customization</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <h1>Welcome to SantaHat</h1>
+        <p>Join the fun with our meme-based Solana token project!</p>
+        <a href="#features" class="cta-btn">Learn More</a>
+    </section>
+
+    <section id="about">
+        <h2>About SantaHat</h2>
+        <p>This is a Solana token project based on a classic meme from Runescape. Explore, buy, and sell your Santa hats on Solana!</p>
+    </section>
+
+    <section id="features">
+        <h2>Features</h2>
+        <div class="feature">
+            <h3>Unique Collectibles</h3>
+            <p>Each SantaHat token is unique, making your collection one-of-a-kind!</p>
+        </div>
+        <div class="feature">
+            <h3>Play and Earn</h3>
+            <p>Get involved and start earning by trading SantaHat tokens.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 SantaHat. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Toggle the mobile menu
+        function toggleMenu() {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

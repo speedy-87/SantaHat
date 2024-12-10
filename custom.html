@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SantaHat Customization</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #e8f5e9; /* Light green background for a festive touch */
+            color: #333;
+            text-align: center;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            height: 100vh;
+            flex-direction: column;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            color: #fff;
+            background-color: #c0392b; /* Christmas red */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Layout */
+        .customization-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            flex-wrap: wrap;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .character-display {
+            width: 400px;
+            height: 600px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            margin-right: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .character-display img {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+        }
+
+        /* Controls Section */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 350px;
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        .control-label {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        select, button {
+            padding: 12px;
+            font-size: 1rem;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            background-color: #f9f9f9;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        select:focus, button:focus {
+            outline: none;
+            border-color: #27ae60; /* Green border when focused */
+        }
+
+        button {
+            background-color: #27ae60; /* Christmas green */
+            color: white;
+            border: none;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #2ecc71; /* Lighter green on hover */
+        }
+
+        select {
+            width: 100%;
+        }
+
+        select:hover, button:hover {
+            background-color: #f0f0f0;
+            border-color: #27ae60;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .customization-container {
+                flex-direction: column;
+                gap: 30px;
+                align-items: center;
+                padding: 0 10px;
+            }
+
+            .character-display {
+                width: 90%;
+                max-width: 300px;
+                height: 300px;
+                margin-bottom: 30px;
+            }
+
+            .controls {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+
+        /* Extra small screen responsiveness */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+
+            .character-display {
+                width: 100%;
+                height: 250px;
+            }
+
+            .controls {
+                width: 100%;
+                max-width: none;
+            }
+
+            select, button {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+        }
+    nav {
+        width: 30%; /* Set the width to 30% of the screen */
+        background-color: green; 
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 0 auto 20px; /* Center the navbar and add bottom margin */
+        text-align: center; /* Center the text inside the navbar */
+    }
+
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    nav ul li {
+        margin: 0;
+    }
+
+    nav ul li a {
+        color: #fff;
+        font-size: 1.2rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+        color: #e67e22;
+    }
+
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+    </ul>
+</nav>
+
+<h1>Customize Your SantaHat Character</h1>
+
+<div class="customization-container">
+    <!-- Character Display -->
+    <div class="character-display">
+        <img id="characterImage" src="images/character.png" alt="Character Image">
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <!-- Pants Dropdown -->
+        <div>
+            <label class="control-label" for="pants">Pants</label>
+            <select id="pants" onchange="updateCustomization()">
+                <option value="pants1">Pants 1</option>
+                <option value="pants2">Pants 2</option>
+                <option value="pants3">Pants 3</option>
+            </select>
+        </div>
+
+        <!-- Shirt Dropdown -->
+        <div>
+            <label class="control-label" for="shirt">Shirt</label>
+            <select id="shirt" onchange="updateCustomization()">
+                <option value="shirt1">Shirt 1</option>
+                <option value="shirt2">Shirt 2</option>
+                <option value="shirt3">Shirt 3</option>
+            </select>
+        </div>
+
+        <!-- Hat Dropdown -->
+        <div>
+            <label class="control-label" for="hat">Hat</label>
+            <select id="hat" onchange="updateCustomization()">
+                <option value="hat1">Santa Hat 1</option>
+                <option value="hat2">Santa Hat 2</option>
+                <option value="hat3">Santa Hat 3</option>
+            </select>
+        </div>
+
+        <!-- Belt Dropdown -->
+        <div>
+            <label class="control-label" for="belt">Belt</label>
+            <select id="belt" onchange="updateCustomization()">
+                <option value="belt1">Belt 1</option>
+                <option value="belt2">Belt 2</option>
+                <option value="belt3">Belt 3</option>
+            </select>
+        </div>
+
+        <!-- Boots Dropdown -->
+        <div>
+            <label class="control-label" for="boots">Boots</label>
+            <select id="boots" onchange="updateCustomization()">
+                <option value="boots1">Boots 1</option>
+                <option value="boots2">Boots 2</option>
+                <option value="boots3">Boots 3</option>
+            </select>
+        </div>
+
+        <!-- Bracelet Dropdown -->
+        <div>
+            <label class="control-label" for="bracelet">Bracelet</label>
+            <select id="bracelet" onchange="updateCustomization()">
+                <option value="bracelet1">Bracelet 1</option>
+                <option value="bracelet2">Bracelet 2</option>
+                <option value="bracelet3">Bracelet 3</option>
+            </select>
+        </div>
+
+        <!-- Hair Dropdown -->
+        <div>
+            <label class="control-label" for="hair">Hair</label>
+            <select id="hair" onchange="updateCustomization()">
+                <option value="hair1">Hair 1</option>
+                <option value="hair2">Hair 2</option>
+                <option value="hair3">Hair 3</option>
+            </select>
+        </div>
+
+        <!-- Skin Tone Dropdown -->
+        <div>
+            <label class="control-label" for="skin">Skin Tone</label>
+            <select id="skin" onchange="updateCustomization()">
+                <option value="skin1">Skin Tone 1</option>
+                <option value="skin2">Skin Tone 2</option>
+                <option value="skin3">Skin Tone 3</option>
+            </select>
+        </div>
+
+        <!-- Reset Button -->
+        <button onclick="resetCustomization()">Reset</button>
+
+        <!-- Download Button -->
+        <button onclick="downloadImage()">Download Image</button>
+    </div>
+</div>
+
+<script>
+    // Function to update the character's image based on the selections
+    function updateCustomization() {
+        const pants = document.getElementById("pants").value;
+        const shirt = document.getElementById("shirt").value;
+        const hat = document.getElementById("hat").value;
+        const belt = document.getElementById("belt").value;
+        const boots = document.getElementById("boots").value;
+        const bracelet = document.getElementById("bracelet").value;
+        const hair = document.getElementById("hair").value;
+        const skin = document.getElementById("skin").value;
+
+        const characterImage = document.getElementById("characterImage");
+
+        // Set the new image source based on the selections
+        characterImage.src = `customizations/${pants}-${shirt}-${hat}-${belt}-${boots}-${bracelet}-${hair}-${skin}.png`;
+    }
+
+    // Function to reset all customizations to default
+    function resetCustomization() {
+        document.getElementById("pants").value = "pants1";
+        document.getElementById("shirt").value = "shirt1";
+        document.getElementById("hat").value = "hat1";
+        document.getElementById("belt").value = "belt1";
+        document.getElementById("boots").value = "boots1";
+        document.getElementById("bracelet").value = "bracelet1";
+        document.getElementById("hair").value = "hair1";
+        document.getElementById("skin").value = "skin1";
+
+        // Reset the character image to the default
+        document.getElementById("characterImage").src = "base-character.png";
+    }
+
+    // Function to download the current character image
+    function downloadImage() {
+        const image = document.getElementById("characterImage");
+        const imageSrc = image.src;
+        const link = document.createElement("a");
+        link.href = imageSrc;
+        link.download = "customized-santahat.png";
+        link.click();
+    }
+</script>
+
+</body>
+</html>
